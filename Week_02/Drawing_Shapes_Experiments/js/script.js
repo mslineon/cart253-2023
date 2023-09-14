@@ -60,7 +60,7 @@ function setup() {
 */
 function draw() {
     // draw functipn runs once every frame
-    // using_the_draw_function()
+    // using_the_draw_function();
 
     //line_1();
 }
