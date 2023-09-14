@@ -8,7 +8,7 @@
 
 "use strict";
 
-// create 2 variables to store the x and y offset that we will use to animate the ellipse in the draw function
+// Note from friend: create 2 variables to store the x and y offset that we will use to animate the ellipse in the draw function
 var anim_x, anim_y;
 
 
@@ -34,11 +34,11 @@ function setup() {
     rectMode(CENTER);
     // remove outline and set fill
     noStroke();//Camel Case (when Capitalize letters)
-    fill(250,45,100,50);
+    fill(250, 45, 100, 50);
     // draw rectangle in the middle of the canvas
     rect(width/2,height/2,100,100);
     
-    // set stroke cplor and weight, and fill color
+    // set stroke color and weight, and fill color
     stroke(250,235,208);
     strokeWeight(2);
     fill(184,235,208,100);
@@ -74,10 +74,11 @@ function line_1() {
     ellipse(width/2,height/2,100,100);
 }
 
-function using_the_draw_function() {
+function using_the_draw_function() { // running the piece of code again and again
     // this is some code written by someone else to help me learn
 
-    background(50,20); // first number sets the color (0 black 255 white), second number sets alpha / opacity
+    // background(50,20); // Second background in draw will jump from set up to draw function
+    // first number sets the color (0 black 255 white), second number sets alpha / opacity
     fill(240);
     // Use the two variables we made earlier
     // frameCount is the number of frames since the program started
@@ -87,6 +88,7 @@ function using_the_draw_function() {
 
     anim_x = sin(frameCount * 0.05)* 200;
     anim_y = cos(frameCount * 0.051)*200;
+    
     stroke(0);
     ellipse(width/2 + anim_x, height/2 + anim_y, 50, 50);
 
