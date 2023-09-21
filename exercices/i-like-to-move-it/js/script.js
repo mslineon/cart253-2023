@@ -74,11 +74,11 @@ function draw() {
 
     //This is the movement of the circle
     circle1.x = circle1.x + 0.5;
-    circle1.y = circle1.y - 0.5;
+    // circle1.y = circle1.y - 0.5; 
     
     //Constrain
-    circle1.x = constrain(circle1.x,0,width);
-    circle1.y = constrain(circle1.y,height,0);
+    circle1.x = constrain(circle1.x,0,width/2);
+    circle1.y = constrain(circle1.x,0,height);
     
 
     //coloring
@@ -95,10 +95,11 @@ function draw() {
 
     //this make the circle move from right to left
 
-    circle2.x = circle2.x - 0.5; // This is the movement of my circle
+    circle2.x = circle2.x - 0.6; // This is the movement of my circle
     circle2.x = constrain(circle2.x,width/2,width);//minimum constrain start at the middle of the width
 
     //This is the color of the circle and the transparency
+    circle2.fill = random(0,255) - circle2.fill;
     fill(circle2.fill,circle2.alpha);
 
     //This draws the circle #2
@@ -110,9 +111,13 @@ function draw() {
 
 
     //This is circle 3
-    circle3.fill = random(0,255);
+    // circle3.fill = random(0,255);
+
+
     fill(circle3.fill);
+    circle.fill = map(mouseX,0,width,0,255);
     ellipse(mouseX, mouseY, circle3.size);
+
 
     
     // ellipse(mouseX+10, mouseY+10,circle3.size);
@@ -120,4 +125,5 @@ function draw() {
     stroke(0, 0, 5);
     strokeWeight(3);
     line(circle2.x - 1, width/2 , circle1.x, circle1.y);
+    
 }
