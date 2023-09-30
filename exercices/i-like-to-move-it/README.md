@@ -1,3 +1,14 @@
-# Template p5 project
+# i-like-to-move-it // CART-253 (Line On)
 
-This is the README file for the entire project. For more official projects you should write information here about the nature of the project, your name, any special explanations of how the project works, etc.
+Hi Lindy!
+
+Please find the two links accessing the project:
+
+1- https://github.com/mslineon/cart253-2023/tree/main/exercices/i-like-to-move-it/
+2- https://mslineon.github.io/cart253-2023/exercices/i-like-to-move-it/
+
+Let me know if anything is missing!
+
+Thank you,
+Line
+
