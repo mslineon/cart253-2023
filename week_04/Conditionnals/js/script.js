@@ -21,6 +21,14 @@ let circle = {
     fill: 255
 }
 
+let circle1 = {
+    x: 300,
+    y: 100,
+    size: 50,
+    speed: 1.5,
+    fill: 255
+}
+
 
 
 
@@ -95,6 +103,23 @@ function draw() {
 
     circle.x = circle.x + circle.speed;
     ellipse(circle.x,circle.y,circle.size);
+    
+    
+    circle1.x = circle1.x + circle1.speed;
+    fill(circle1.fill);
+
+    if (circle1.x < width/3 || circle1.x > 2 * width/3) {
+        // This only happens if BOTH those conditions are true
+        circle1.speed = -circle1.speed;
+      }
+
+     if (circle.x < width/3 || circle.x > 2 * width/3) {
+        // This happens when EITHER of the two conditions are true
+        fill(255,255,255);
+      }
+    ellipse(circle1.x,circle1.y,circle1.size);
+
+    
 
 
 }
