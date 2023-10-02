@@ -1,3 +1,14 @@
-# Template p5 project
+Hi Stephen & Lindy! 
 
-This is the README file for the entire project. For more official projects you should write information here about the nature of the project, your name, any special explanations of how the project works, etc.
+Hope all is well :) 
+
+As mentioned in the e-mail, I was on sick leave last week (week of September 25th) due to a medical issue. Big apologies, I was not able to deliver the exercice on the due date! 
+
+Please find the dodge-em exercice as follow:
+
+1. https://github.com/mslineon/cart253-2023/tree/main/exercices/Dodge-em
+2. https://mslineon.github.io/cart253-2023/exercices/Dodge-em/
+
+Let me know if anything is missing smile
+Thank you,
+Line
