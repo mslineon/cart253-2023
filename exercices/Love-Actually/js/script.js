@@ -10,14 +10,20 @@ let bg = { // create object values for the BG
     b: 0
 };
 
-let heart1 = { // create object values for the heart1
-    x: undefined,
-    y: 250,
-    size: 200,
-    vx: 0,
-    vy: 0,
-    speed: 5
-}
+// let heart1 = { // create object values for the heart1
+//     x: undefined,
+//     y: 250,
+//     size: 200,
+//     vx: 0,
+//     vy: 0,
+//     speed: 5
+// }
+
+let heart1;
+
+function preload() {
+    heart1 = loadImage("assets/images/giphy.gif");
+  }
 
 let heart2 = { // create object values for the heart 2
     x: undefined,
@@ -32,7 +38,6 @@ let state = 'title';
 
 
 function setup() {
-
     createCanvas(windowWidth,windowHeight); //Set up canvas size
     createHeart();
 }
@@ -43,10 +48,9 @@ function createHeart () {
     heart1.x = width/3; // Define position of heart 1 on the x axis
     heart2.x = 2 * width/3;
     // Define position of heart 2 on the x axis
-
     //Set uo the movement of the heart
-    heart1.vx = random(-heart1.speed,heart1.speed); 
-    heart2.vx = random(-heart2.speed,heart2.speed);
+    // heart1.vx = random(-heart1.speed,heart1.speed); 
+    // heart2.vx = random(-heart2.speed,heart2.speed);
     heart1.vy = random(-heart1.speed,heart1.speed);
     heart2.vy = random(-heart2.speed,heart2.speed);
 
@@ -57,7 +61,9 @@ function draw() {
     gradientBg();
     //background(0);
 
-    if (state === `title`) {
+    image(heart1, mouseX, mouseY, 85, 90);
+
+    if (state === `title`) { // this allows to create the simulation
         title();
       }
       else if (state === `simulation`) {
@@ -72,7 +78,8 @@ function draw() {
 }
 
 
-function title() {
+
+function title() { // this write the first frame title
     push();
     textSize(100);
     fill(120,153,212);
@@ -82,14 +89,14 @@ function title() {
 }
 
 
-function simulation(){
+function simulation(){ // This initiate the simulation
     move();
     heartIsOff();
     touchingHearts();
     displayHeart();
 }
 
-function love() {
+function love() { // this is the love title found
     push();
     textSize(64);
     fill(255,150,150);
@@ -108,16 +115,17 @@ function sadness() {
 }
 
 function move() {
-    heart1.x += heart1.vx;
-    heart1.y += heart1.vy;
+    // heart1.x += heart1.vx;
+    // heart1.y += heart1.vy;
     heart2.x += heart2.vx;
     heart2.y += heart2.vy;
 }
 
+
 function touchingHearts() {
 
     let d = dist(heart1.x, heart1.y, heart2.x, heart2.y);
-    if (d < heart1.size/2 + heart2.size/2){
+    if (d < heart1.size*2 + heart2.size){
         state = `love`;
     }
 }
@@ -128,8 +136,9 @@ function heartIsOff() {
     }
 }
 
-function gradientBg (){
+function gradientBg (){ // extra function
     background(bg.r,bg.g,bg.b);
+
     bg.r = bg.r + 1;
     bg.g = bg.g + 1;
     bg.b = bg.b + 1;
@@ -140,13 +149,18 @@ function gradientBg (){
 }
 
 function displayHeart() {
-    ellipse(heart1.x,heart1.y,heart1.size);
+    ellipse(mouseX,mouseY,heart1.size);
     ellipse(heart2.x,heart2.y,heart2.size);  
 }
 
 
-
 function mousePressed() {
+    // When the mouse button is pressed, move the circle to the mouse position
+    heart1.x = mouseX;
+    heart1.y = mouseY;
+  }
+
+function keyPressed() {
     if (state === `title`){
         state = `simulation`;
     }
