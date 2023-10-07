@@ -200,10 +200,11 @@ function displayHeart() {
 
 
 
-function keyPressed() {
-    if (state === `title`){
+function keyPressed() { // do this if a key is pressed
+    if (state === `title`){  // if its the title go to simulation
         state = `simulation`;
     }
+    // otherwise dont do anything
 }
 
 
