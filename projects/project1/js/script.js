@@ -5,13 +5,58 @@
 
 "use strict";
 
-let state = `explanation`; // variable to store the state open screen 
+let state = `simulation`; // variable to store the state open screen 
+
+let gameTimer = {
+    secondsCounter: 30, 
+    minuteCounter: 0,
+    timeLeftState: true
+};
+
+let abiDog = {
+    x: 0,
+    y: undefined,
+    size: 50,
+    vx: 1,
+    vy: 0,
+    abiImg: undefined
+};
+
+let hand = {
+    x: 0,
+    y: undefined,
+    size: 35,
+    vx: 1,
+    vy: 0,
+    handImg: undefined
+};
+
+let bone = {
+    x: 0,
+    y: 0,
+    size: 30,
+    vx: 1,
+    vy: 0,
+    boneImg: undefined
+};
+
+let ball = {
+    x: 0,
+    y: 0,
+    size: 30,
+    vx: 1,
+    vy: 0,
+    ballImg: undefined
+};
 
 
 
 
 function preload() {
-
+    abiImg = loadImage("assets/images/Abigail.png");
+    boneImg = loadImage("assets/images/Bone.png");
+    handImg = loadImage("assets/images/Hand.png");
+    ballImg = loadImage("assets/images/Ball.png");
 }
 
 
@@ -22,6 +67,8 @@ function setup() {
 }
 
 function draw() {
+
+    background(255);
 
     if (state === `title`) {
         title();
@@ -35,6 +82,8 @@ function draw() {
     else if(state === `failure`) {
         failure();
     }
+
+    
 
 
 }
@@ -61,7 +110,7 @@ function explanation(){
 }
 
 function simulation() {
-
+    timerDisplay();
 }
 
 function failure() {
@@ -70,6 +119,7 @@ function failure() {
 
 function ballControl() {
 
+
 }
 
 function boneControl() {
@@ -77,13 +127,27 @@ function boneControl() {
 }
 
 function timerDisplay() {
+    gameTimer.secondsCounter -= 1/60; // 60 frame per 1 second 
+    gameTime.minuteCounter = gameTimer.secondsCounter/60; // This is the minutes counting
 
+    if (gameTimer.secondsCounter < 0) { // if the counter gets to zero then initiate the failure sequence
+        state = `failure`;
+        timeLeftState = false; // You ran out of time, haha to bad for you
+    }
+    
+    // displaying time bottom left of the screen seconds & minute so it looks like a clock
+    push();
+    textAlign(LEFT); 
+    text(round(gameTimer.secondsCounter), 70, height-50); // Use round to not display all extra milliseconds and more
+    text(`:`, 65, height-50);
+    text(round(gameTime.minuteCounter), 55, height-50);
+    pop();
 }
 
 function scoreDisplay() {
 
 }
 
-function abiDog() {
+function abiDogDisplay() {
 
 }

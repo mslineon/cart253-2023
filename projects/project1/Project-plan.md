@@ -14,7 +14,7 @@ General idea
 	
 Interactivity
 
-	• Ball throwing:
+	• Ball throwing:    
         -  Click, drag & release - get distance in-between mouse press & release using the dist function 
 
     • Bones falls from the hands when space buttons is clicked
