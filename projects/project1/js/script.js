@@ -10,7 +10,6 @@ let happyFont; // font for simulation, title & explanation
 let sadFont; // font for last frame
 let barkFx;// sound for abi bark (Pippin sound used from tutorial)
 let scaryFx; // sound from stock 
-
 let state = `title`; // variable to store the state open screen 
 
 let gameTimer = { // Game timer object
@@ -32,7 +31,6 @@ let abiDog = { // abigail object
     hasBone: false,
     amountBones: 0 // Variable storing the initial amount of bone - This is the initial amount of bone abi has a the beginning of the game
 };
-
 
 let hand = { // object js for the hand moving at the top
     x: 0,
@@ -67,6 +65,7 @@ function preload() {
 }
 
 function setup() {
+    frameRate(60); // frame rate to make the animation not lag and go slow (p5js reference https://p5js.org/reference/#/p5/frameRate)
     createCanvas(windowWidth, windowHeight); // canvas at the size of the windows
     textAlign(CENTER,CENTER); // put text middle in general
     abiDog.y = height/2; // position abigail at the middle of the height 
@@ -112,10 +111,12 @@ function explanation(){ // display how to play the game
     textSize(80);
     text(`Play with Abigail the dog`, width/2, height/2 - 100);
     textSize(45); // big title to play with Abi
-    text(`Press any key to drop the bones for her to catch!`, width/2, height/2); // text how to play
+    text(`Press any key to drop the bones for her to catch`, width/2, height/2); // text how to play
     text(`She has to catch 5 bones in 45 secondes for her to be happy`, width/2, height/2 + 50); // text rules
     textSize(35); 
-    text(`press any key to start, good luck!`, width/2, height/2 + 180); // text to initiate game
+    text(`Open your sound and press any key to start, good luck`, width/2, height/2 + 180); // text to initiate game
+    textSize(20);
+    text(`Disclaimer, no dog has been harmed in the process. Many treats has been given for compensation.`, width/2, height/2 + 380);
     pop();
 }
 
@@ -203,8 +204,7 @@ function timerDisplay() {
     if (gameTimer.secondsCounter < 0) { // if the counter gets to zero then initiate the failure sequence
         state = `failure`;
     }
-    // displaying time bottom left of the screen seconds & minute so it looks like a clock
-    push();
+    push(); // displaying time bottom left of the screen seconds & minute so it looks like a clock
     textAlign(LEFT); // alignment
     textFont(happyFont); // font use
     fill(255); // color
