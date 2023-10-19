@@ -8,13 +8,13 @@ General idea
 
 	1. My dog catching 
 	2. Bones
-	3. Users throw the ball
-	4. Wearing glass when wins when dogs catch bones
+	3. Users throw the ball // Removing
+	4. Wearing glass when wins when dogs catch bones // not doing this one - instead bone appear in abi mouth
      
 	
 Interactivity
 
-	• Ball throwing:    
+	• Ball throwing: // REMOVING THIS OPTION OF THROWING BALL.    
         -  Click, drag & release - get distance in-between mouse press & release using the dist function 
 
     • Bones falls from the hands when space buttons is clicked
@@ -24,7 +24,7 @@ Interactivity
     • Timer to catch 3 of each balls/bones
         - number that counts down using variable
 
-    • Display an amount of bones/ball caught
+    • Display an amount of bones/ball caught // decided to not do this one 
         - create variables of the amount of bones (amountOfBones)
         - create variables of the amount of balls (amountOfBalls)
         - everytime Abi & ball or bones touches, then the number of bones/balls is counted
