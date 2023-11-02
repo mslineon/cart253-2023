@@ -1,3 +1,11 @@
 # Template p5 project
 
-This is the README file for the entire project. For more official projects you should write information here about the nature of the project, your name, any special explanations of how the project works, etc.
+Hi Stephen!
+Hope all is well smile
+
+Please find the dodge-em exercice as follow:
+1. https://github.com/mslineon/cart253-2023/tree/main/exercices/age-of-aquariums/
+2. https://mslineon.github.io/cart253-2023/exercices/age-of-aquariums/
+Let me know if anything is missing!! smile
+Thank you,
+Line
