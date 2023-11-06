@@ -177,7 +177,8 @@ function keyPressed() {
     else if (state === `explanation`) { // from explanation, we press and start the game
         state = `simulation`;
     }
-    else if (state === `simulation`) { // when we press during the simulation, then the bone drop from hand
+    else if (state === `simulation`) {
+        // when we press during the simulation, then the bone drop from hand
         bone.x = hand.x; // bone at the position of hand
         bone.y = hand.y; // bone height at the position of hand height
         abiDog.hasBone = false; // when we press on the key, then we reinitiate the bone dropping from hand
