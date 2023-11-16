@@ -14,7 +14,7 @@ let frames = [];
 let frameNumber = 1;
 
 function setup() {
-  createCanvas(740, 900);
+  createCanvas(640, 780);
   video = createCapture(VIDEO);
   video.size(width, height);
 
