@@ -16,9 +16,9 @@ function preload() {
   }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
-  video = createCapture(VIDEO);
-  video.size(640, 480);
+  createCanvas(windowWidth, windowHeight); // canvas size
+  video = createCapture(VIDEO); // display video
+  video.size(640, 480); // video screensize
 
 
   handpose = ml5.handpose(video); // library from ml5js
@@ -31,16 +31,16 @@ function setup() {
 
   // Hide the video element, and just show the canvas
   video.hide();
-  imageMode(CENTER);
-  ellipseMode(CENTER);
+  imageMode(CENTER); // position of the video screen
+  ellipseMode(CENTER); // control of the circle
 }
 
 function draw() {
-  background(255);
+  background(255); // bg colors
   image(video, width/2, height/2); // display video
-  drawKeypoints();
-  fill(0);  
-  text(`touch your thumb and pointer to control the volume and circle`,width/2,height/2 + 280);
+  drawKeypoints(); // display & read the pointer & thumber
+  fill(0); //color of text
+  text(`touch your thumb and pointer to control the volume and circle`,width/2,height/2 + 280);// text explanation
 }
 
 function drawKeypoints() {
@@ -51,17 +51,17 @@ function drawKeypoints() {
     console.log(distance);
     //stroke(255,0,0); 
     //line(pointer[0], pointer[1], thumb[0], thumb[1]); // create a line to test the distance between fingers & thumbs
-    noStroke();
-    fill(255, 240, 219);
-    ellipse(width/2, height/2, distance);
-    console.log(predictions[0].landmarks[8][2]);
+    noStroke(); // no stroke to circle
+    fill(255, 240, 219); // color circle
+    ellipse(width/2, height/2, distance); // ellipse position
+    // console.log(predictions[0].landmarks[8][2]); // to see the distance fingers in the log
     chimesSFX.setVolume(constrain(distance/350, 0, 1), 0.01);
     if (firstPlay == true) {
-        chimesSFX.loop();
+        chimesSFX.loop(); // play sound when hands is show
     }
-    firstPlay = false;
+    firstPlay = false; // run the codes for playing music once
   }
   else {
-    chimesSFX.setVolume(0, 0.01);
+    chimesSFX.setVolume(0, 0.01); // volume 
   }
 }
