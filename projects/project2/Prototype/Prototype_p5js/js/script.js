@@ -8,19 +8,22 @@
 let handpose;
 let video;
 let predictions = [];
+let titleFont;
+let state = `title`;
 
 // video frames
 let frames = [];
 let frameNumber = 1;
 
+function preload() {
+  titleFont = loadFont("assets/fonts/Doppelganger-Display.otf");
+}
+
 function setup() {
   createCanvas(640, 780);
   video = createCapture(VIDEO);
   video.size(width, height);
-
   handpose = ml5.handpose(video); // library from ml5js
-
-  
   // This sets up an event that fills the global variable "predictions"
   // with an array every time new hand poses are detected
   handpose.on("predict", results => { // From p5js library references
@@ -39,11 +42,37 @@ function setup() {
 }
 
 function draw() {
-  image(video, 0, 0, width, height/2);
-  image(frames[frameNumber], 0, height/2, width, height/2);
+
+  if (state === `title`) {
+    title();
+  }
+  else if (state === `drawKeypoints`) {
+    drawKeypoints();
+    image(video, 0, 0, width, height/2);
+    image(frames[frameNumber], 0, height/2, width, height/2);
+  }
+  
   //idx = (constrain(floor(dist(mouseX, mouseY, width/2, height/2)/5), 1, 149));
   // We can call both functions to draw all keypoints and the skeletons
-  drawKeypoints();
+}
+
+function title() {
+  push();
+  background(255);
+  textFont(titleFont);
+  textSize(75);
+  fill(0);
+  text(`Mimosa Pudica`, width/2 - 60, height/4);
+  textSize(25);
+  text(`The perception of the Mimosa Pudica can be miscommunicated`, width/2 - 200, height/3);
+  text(`and misinterpreted as fragility but is rather a defense mechanism against the environment.`, width/2 - 150, height/2 - 95);
+  pop();
+}
+
+function keyPressed() {
+  if (state === `title`) {
+    state = `drawKeypoints`;
+  }
 }
 
 // A function to draw ellipses over the detected keypoints
@@ -60,4 +89,4 @@ function drawKeypoints() {
 
     console.log(predictions[0].landmarks[8][2]);
   }
-}
+}s
