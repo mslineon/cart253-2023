@@ -79,10 +79,10 @@ function title() { // Introduction frame
   textSize(14); // font size of the description text
   text(`TOUCH YOUR THUMB AND INDEX TO INTERACT WITH THE PLANT.`, width/2 - 220, height/2 - 10);
   if (modelReady === false) { // this text appear when the model is not yet loaded
-    text(`THE PLANT IS RECHARGING, PLEASE STAND BY UNTIL IT'S BACK TO ITSELF...`, 0, height - 100);
+    text(`THE PLANT IS RECHARGING, PLEASE STAND BY UNTIL IT'S BACK TO ITSELF...`, 0, height - 200);
   }
   else if (modelReady === true) { // when the model is loaded then this text appear
-    text(`THE PLANT IS READY FOR YOU TO PLAY WITH THEM, PRESS YOUR MOUSE TO ENTER.`, 0, height - 100);
+    text(`THE PLANT IS READY FOR YOU TO PLAY WITH THEM, PRESS YOUR MOUSE TO ENTER.`, 0, height - 200);
   }
   pop();
 }
