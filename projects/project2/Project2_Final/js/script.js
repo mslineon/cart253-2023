@@ -1,6 +1,5 @@
 //Line On
 // Project 2 - Mimosa Pudica
-//Just testing & Prototype of hand tracking
 // references found :
 //https://editor.p5js.org/Jenny-yw/sketches/sqABo7pVh 
 //https://learn.ml5js.org/#/
@@ -27,11 +26,11 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(640, 780); // canvas size aka video size
-  video = createCapture(VIDEO); // webcam
-  video.size(width, height); // size of the video
-  handpose = ml5.handpose(video, modelLoaded); // library from ml5js - This sets up an event that fills the global variable "predictions" - with an array every time new hand poses are detected
-  handpose.on("predict", results => { // From p5js library references (see link above)
+    createCanvas(640, 780); // canvas size aka video size
+    video = createCapture(VIDEO); // webcam
+    video.size(width, height); // size of the video
+    handpose = ml5.handpose(video, modelLoaded); // library from ml5js - This sets up an event that fills the global variable "predictions" - with an array every time new hand poses are detected
+    handpose.on("predict", results => { // From p5js library references (see link above)
     predictions = results;
   });
 
@@ -45,7 +44,7 @@ function setup() {
   console.log("framesAmount", frameAmount); // check how many frames i loaded  
   delay = new p5.Delay(); // reference from p5js sound Delay
   delay.process(mimosaSong, 0.1, 0.8, 2300); // how the music will fades away - trials and error
-  delay.setType(`pingPong`); // type of delay from P5js references
+  delay.setType(`pingPong`); // type of sound delay from P5js references
 }
 
 function modelLoaded() {
@@ -59,7 +58,7 @@ function draw() {
   }
   else if (state === `drawKeypoints`) {
     drawKeypoints();
-    image(frames[frameNumber], 0, 0);// image(video, 0, 0, width, height/2);
+    image(frames[frameNumber], 0, 0);// show frames of plants
   }
 }
 
@@ -73,7 +72,7 @@ function title() { // Introduction frame
   textSize(16); // font size of the description text
   textFont(myFont); // font use for the description text
   text(`HOW WE PERCEIVE THE MIMOSA PUDICA CAN BE MISCOMMUNICATED.`, width/2 - 220, height/2 - 150);
-  text(`AND MISINTERPRETED AS FRAGILITY BUT IT IS IN A SENSE A DEFENSE.`, width/2 - 220, height/2 - 120);
+  text(`AND MISINTERPRETED AS FRAGILITY BUT IT IS IN A SENSE A DEFENSE`, width/2 - 220, height/2 - 120);
   text(`MECHANISM AGAINST THE ENVIRONMENT THEY LIVE IN.`, width/2 - 110, height/2 - 90);
   text(`BE GENTLE WHEN TOUCHING IT.`, width/2 - 219, height/2 + 80);
   textSize(14); // font size of the description text
@@ -81,8 +80,9 @@ function title() { // Introduction frame
   if (modelReady === false) { // this text appear when the model is not yet loaded
     text(`THE PLANT IS RECHARGING, PLEASE STAND BY UNTIL IT'S BACK TO ITSELF...`, 0, height - 200);
   }
-  else if (modelReady === true) { // when the model is loaded then this text appear
-    text(`THE PLANT IS READY FOR YOU TO PLAY WITH THEM, PRESS YOUR MOUSE TO ENTER.`, 0, height - 200);
+  else if (modelReady === true) { // when the model is loaded then this text appear to invite the viewer to enter the scene
+    text(`PRESS YOUR MOUSE TO ENTER`, 0, height - 150);
+    text(`THE PLANT IS READY FOR YOU TO PLAY WITH THEM.`, 0, height - 200);
   }
   pop();
 }
@@ -93,7 +93,7 @@ function mousePressed() { // when the user mouse pressed and when the model is r
   }
 }
 
-function drawKeypoints() { // A function to draw ellipses over the detected keypoints
+function drawKeypoints() { // A function to detect keypoints
   if (predictions.length === 1) { // if there is a prediction then the hands is tracked
     let pointer = predictions[0].landmarks[8]; // this is the number at my pointer finger (landmark define by ml5js)
     let thumb = predictions[0].landmarks[4]; // this is the number at my thumbs (landmark define by ml5js)
@@ -102,7 +102,7 @@ function drawKeypoints() { // A function to draw ellipses over the detected keyp
     distance = constrain(distance, 50, 200); // keep distance values inside 0-250 (define by the console above)
     distance = map(distance, 50, 200, frameAmount, 0); // map distance values to 0-amount of frames
     distance = floor(distance); // round down the number of the distance to what the value is
-    frameNumber = distance; // assign distance to framenumber
+    frameNumber = distance; // assign distance to frame number
     mimosaSong.setVolume(1-(distance/frameAmount), 0.01); // to play the music when the fingers are not touching
     delay.drywet(distance/frameAmount); // reference p5js for a type of delay
     if (firstPlay === true) { // play the song
