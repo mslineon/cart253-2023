@@ -8,16 +8,16 @@ let handpose; // object to define hand recognition
 let video; // object for the video
 let predictions = []; // object to predict the fingers
 let titleFont; // font title
-let myFont;
+let myFont; // font description
 let state = `title`; // state starting at title
 let modelReady = false; // object to not start ml5js
 let firstPlay = true; // state of song when we start
 let mimosaSong, delay; // object for song
 
-// video frames
-let frames = []; 
-let frameNumber = 1;
-let frameAmount = 0;
+// video frames 
+let frames = []; // array containing the frames
+let frameNumber = 1; // current frame to display
+let frameAmount = 0; // countaining the number of frames
 
 function preload() {
   titleFont = loadFont("assets/fonts/Doppelganger-Display.otf"); // loading title font
@@ -40,7 +40,7 @@ function setup() {
     let filename = `assets/mimosa/frame_${i}.jpg`; 
     frames.push(loadImage(filename)); // use string to load the images from video in
   }
-  frameAmount = frames.length - 1; // amount of frame we are loading
+  frameAmount = frames.length - 1; // amount of frame we are loading -1 being making the flower close
   console.log("framesAmount", frameAmount); // check how many frames i loaded  
   delay = new p5.Delay(); // reference from p5js sound Delay
   delay.process(mimosaSong, 0.1, 0.8, 2300); // how the music will fades away - trials and error
@@ -56,8 +56,8 @@ function draw() {
   if (state === `title`) { // state for the first page title 
     title();
   }
-  else if (state === `drawKeypoints`) {
-    drawKeypoints();
+  else if (state === `drawKeypoints`) { // state for displaying the video images & starting the function of the drawkeypoint aka tracking fingers
+    drawKeypoints(); // show the whole thumb/finger distance & mapping
     image(frames[frameNumber], 0, 0);// show frames of plants
   }
 }
